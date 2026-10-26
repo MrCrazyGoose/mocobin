@@ -1,0 +1,25 @@
+# Render Blueprint: one free web service that runs the API and serves the
+# built site. Data lives in an external PostgreSQL database (e.g. Neon) whose
+# connection string you paste in when Render asks for DATABASE_URL.
+services:
+  - type: web
+    # Keep this name: changing it makes Render create a second service.
+    name: ecosort
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: COMPETITION_NAME
+        value: Fall 2026 Zero-Waste Challenge
+      - key: COMPETITION_START
+        value: 2026-09-01
+      - key: COMPETITION_END
+        value: 2026-12-18

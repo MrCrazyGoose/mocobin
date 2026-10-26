@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-page font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading font-semibold leading-tight;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl border-2 border-brand-100 bg-white;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 font-heading text-lg font-semibold transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-300 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn bg-brand-700 text-white hover:bg-brand-800;
+  }
+  .btn-secondary {
+    @apply btn border-2 border-brand-200 bg-white text-brand-800 hover:bg-brand-50;
+  }
+  .btn-big {
+    @apply px-8 py-4 text-2xl;
+  }
+  .input {
+    @apply w-full rounded-2xl border-2 border-brand-100 bg-white px-4 py-3 text-base placeholder:text-ash/70 focus:border-brand-400 focus:outline-none focus:ring-0;
+  }
+  .label {
+    @apply mb-1.5 block font-heading text-base font-semibold;
+  }
+  .pill {
+    @apply inline-block rounded-full px-3 py-0.5 font-heading text-sm font-semibold;
+  }
+  /* Yellow and black warning stripe for "never in the blue bin" alerts. */
+  .stripe {
+    background: repeating-linear-gradient(-45deg, #f5c400 0 12px, #1a2414 12px 24px);
+  }
+}
